@@ -82,7 +82,7 @@ function BottomRightCorner() {
         </svg>
 
         <div className="flex items-center gap-3">
-          <span className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-white">
+          <span className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#1b2a4e]/15">
             <ArrowUpRight className="w-5 h-5 text-[#5E6470]" />
           </span>
           <div className="leading-tight">
