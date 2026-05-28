@@ -1,11 +1,5 @@
-import {
-  Cloud,
-  Database,
-  HardDrive,
-  Network,
-  Zap,
-  Cpu,
-} from 'lucide-react'
+import { Database, HardDrive, Network, Zap, Cpu } from 'lucide-react'
+import { AwsLogo, AzureLogo, GcpLogo } from '../../components/BrandIcons.jsx'
 import PageHeader from '../../components/PageHeader.jsx'
 import CalloutCTA from '../../components/CalloutCTA.jsx'
 import {
@@ -51,17 +45,17 @@ helm install curia ./deploy/helm/curia \\
 
 const cloudNotes = [
   {
-    icon: Cloud,
+    icon: AwsLogo,
     title: 'AWS EKS',
     body: 'Run on a managed EKS cluster. Pair with RDS for PostgreSQL, S3 for object storage, ElastiCache for caching, and an ALB ingress with ACM-issued TLS.',
   },
   {
-    icon: Cloud,
+    icon: AzureLogo,
     title: 'Azure AKS',
     body: 'Deploy to AKS. Use Azure Database for PostgreSQL, Blob Storage for objects, Azure Cache for Redis, and the application gateway ingress controller for TLS.',
   },
   {
-    icon: Cloud,
+    icon: GcpLogo,
     title: 'GCP GKE',
     body: 'Deploy to GKE. Use Cloud SQL for PostgreSQL, Cloud Storage for objects, Memorystore for caching, and a GKE ingress with managed certificates.',
   },
