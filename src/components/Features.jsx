@@ -25,13 +25,13 @@ export default function Features() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-[#1b2a4e] text-3xl md:text-5xl font-semibold tracking-tight max-w-2xl"
         >
-          Architected for high-performance DeFi
+          Most AI tools flatten your organization. Curia doesn&apos;t.
         </motion.h2>
         <a
           href="#"
           className="group/btn shrink-0 inline-flex items-center gap-2 rounded-full border border-[#1b2a4e]/20 px-5 py-2.5 text-[#1b2a4e] text-sm font-medium hover:bg-[#1b2a4e] hover:text-white transition-colors"
         >
-          Start Staking
+          See how access works
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:rotate-45" />
         </a>
       </div>
@@ -45,15 +45,22 @@ export default function Features() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className={`${cardBase} md:row-span-2 min-h-[28rem] p-8 flex flex-col justify-between`}
+          className={`${cardBase} md:row-span-2 md:min-h-[28rem] p-8 flex flex-col justify-between gap-10`}
         >
-          <Layers className="pointer-events-none absolute -bottom-10 -right-10 w-72 h-72 text-[#1b2a4e] opacity-[0.02] transition-transform duration-500 group-hover:scale-110" />
+          <div className="pointer-events-none absolute -bottom-12 -right-12 transition-transform duration-700 group-hover:scale-110">
+            <motion.div
+              animate={{ y: [0, -18, 0], rotate: [0, 5, 0] }}
+              transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <Layers className="w-80 h-80 text-[#1b2a4e] opacity-[0.06]" />
+            </motion.div>
+          </div>
           <h3 className="relative z-10 text-[#1b2a4e] text-3xl md:text-4xl font-semibold tracking-tight max-w-sm">
-            Unlock the liquidity of your staked assets
+            Every team gets its own AI employees
           </h3>
           <p className="relative z-10 text-[#5E6470] text-base max-w-sm">
-            Keep earning while you trade. Liquid staking derivatives stay
-            composable across the entire RIVR ecosystem.
+            Scoped agents, memory, and retrieval per team. Marketing can&apos;t
+            ask Curia about a payments incident it was never allowed to access.
           </p>
         </motion.div>
 
@@ -66,13 +73,20 @@ export default function Features() {
           viewport={{ once: true, amount: 0.3 }}
           className={`${cardBase} md:col-span-2 min-h-[13rem] p-8 flex flex-col justify-between`}
         >
-          <Activity className="pointer-events-none absolute bottom-0 right-0 w-64 h-64 translate-x-8 translate-y-8 text-[#1b2a4e] opacity-[0.02] transition-transform duration-500 group-hover:scale-110" />
+          <div className="pointer-events-none absolute bottom-0 right-0 translate-x-8 translate-y-8 transition-transform duration-700 group-hover:scale-110">
+            <motion.div
+              animate={{ y: [0, 12, 0], scale: [1, 1.05, 1] }}
+              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <Activity className="w-64 h-64 text-[#1b2a4e] opacity-[0.06]" />
+            </motion.div>
+          </div>
           <h3 className="relative z-10 text-[#1b2a4e] text-2xl md:text-3xl font-semibold tracking-tight">
-            Real-time Yields
+            Your org chart is the AI boundary
           </h3>
           <p className="relative z-10 text-[#5E6470] text-base max-w-md">
-            Watch rewards stream into your wallet block by block — no claiming,
-            no waiting, no friction.
+            Access follows roles and policy, not broad workspace membership.
+            Leadership gets governed rollups; teams keep their context private.
           </p>
         </motion.div>
 
@@ -88,18 +102,18 @@ export default function Features() {
           <div>
             <ShieldCheck className="w-8 h-8 text-[#1b2a4e] mb-4" />
             <h3 className="text-[#1b2a4e] text-2xl font-semibold tracking-tight">
-              Bank-grade
+              Least privilege, fully audited
             </h3>
             <p className="mt-2 text-[#5E6470] text-sm">
-              Smart contracts audited by leading security firms and continuously
-              monitored on-chain.
+              Agents act with scoped memory and approved tools only. Every
+              access is logged — what an agent read, and why.
             </p>
           </div>
           <a
             href="#"
             className="self-start inline-flex items-center gap-2 rounded-full border border-[#1b2a4e]/20 px-4 py-2 text-[#1b2a4e] text-sm font-medium hover:bg-[#1b2a4e] hover:text-white transition-colors"
           >
-            View Audits
+            View audit logs
           </a>
         </motion.div>
 
@@ -113,11 +127,11 @@ export default function Features() {
           className={`${cardBase} p-8 flex flex-col justify-between`}
         >
           <h3 className="text-[#1b2a4e] text-2xl font-semibold tracking-tight">
-            Cross-Chain
+            Open source & self-hosted
           </h3>
           <div className="flex items-center justify-between">
             <p className="text-[#5E6470] text-sm max-w-[10rem]">
-              Bridge yield seamlessly across networks.
+              Run Curia on your own infrastructure.
             </p>
             <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#f0f0f0] text-[#1b2a4e] transition-transform duration-300 group-hover:scale-110">
               <ArrowUpRight className="w-5 h-5" />

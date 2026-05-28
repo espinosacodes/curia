@@ -1,15 +1,15 @@
 const columns = [
   {
-    title: 'Protocol',
-    links: ['Smart Vaults', 'Staking', 'Tokenomics', 'Security'],
+    title: 'Product',
+    links: ['Virtual office', 'Role-based agents', 'Access control', 'Self-hosting'],
   },
   {
     title: 'Developers',
-    links: ['Documentation', 'SDK', 'API Reference', 'GitHub'],
+    links: ['Documentation', 'GitHub', 'API reference', 'Deployment'],
   },
   {
     title: 'Community',
-    links: ['Discord', 'Twitter', 'Governance', 'Blog'],
+    links: ['Discord', 'Governance', 'Security', 'Blog'],
   },
 ]
 
@@ -20,11 +20,12 @@ export default function Footer() {
         {/* Left column */}
         <div className="max-w-sm">
           <span className="text-[#1b2a4e] text-2xl font-semibold tracking-tight">
-            RIVR
+            Curia
           </span>
           <p className="mt-4 text-[#5E6470] text-sm leading-relaxed">
-            Fluid asset streams for high-performance DeFi. Stake, earn, and move
-            value in real time across every chain.
+            The privacy-first, open-source role-based AI virtual office. Every
+            team gets its own AI employees, with knowledge separated by role,
+            team, and policy.
           </p>
         </div>
 
@@ -54,7 +55,7 @@ export default function Footer() {
 
       <div className="mt-12 pt-6 border-t border-[rgba(30,50,90,0.1)] flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-[#5E6470]/60 text-xs">
-          © 2026 RIVR Protocol. All rights reserved.
+          © 2026 Curia. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
           <a href="#" className="text-[#5E6470]/60 hover:text-[#1b2a4e] text-xs transition-colors">

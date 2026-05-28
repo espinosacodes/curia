@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
-import { Sparkles, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Navbar from './Navbar.jsx'
+import BackgroundVideo from './BackgroundVideo.jsx'
 
 const HERO_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4'
@@ -23,17 +24,7 @@ const item = {
   },
 }
 
-function HeroBadge() {
-  return (
-    <motion.div
-      variants={item}
-      className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur-md border border-white/20 px-4 py-1.5 shadow-sm"
-    >
-      <Sparkles className="w-4 h-4 text-[#1b2a4e]" />
-      <span className="text-sm font-medium text-[#1b2a4e]">Fluid Staking</span>
-    </motion.div>
-  )
-}
+const CORNER_PATH = 'M56 56V0C56 30.9279 30.9279 56 0 56H56Z'
 
 function BottomLeftCard() {
   return (
@@ -41,7 +32,7 @@ function BottomLeftCard() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20 rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-4 md:p-5 shadow-lg max-w-[18rem]"
+      className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-10 md:left-10 z-20 rounded-[1.25rem] md:rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-3 sm:p-4 md:p-5 shadow-lg w-[14rem] sm:w-auto sm:max-w-[18rem]"
     >
       <div className="flex items-center gap-3">
         <div className="flex -space-x-2">
@@ -54,12 +45,12 @@ function BottomLeftCard() {
         </div>
         <div className="leading-tight">
           <p className="text-white font-semibold text-base">5.2K</p>
-          <p className="text-white/80 text-xs">Active Yielders</p>
+          <p className="text-white/80 text-xs">Community members</p>
         </div>
       </div>
       <a
         href="#"
-        className="mt-4 flex items-center justify-center gap-2 rounded-full bg-white text-[#1b2a4e] text-sm font-medium px-4 py-2 hover:bg-white/90 transition-colors"
+        className="mt-3 md:mt-4 flex items-center justify-center gap-2 rounded-full bg-white text-[#1b2a4e] text-sm font-medium px-4 py-2 hover:bg-white/90 transition-colors"
       >
         Join Discord
         <ArrowUpRight className="w-4 h-4" />
@@ -71,27 +62,27 @@ function BottomLeftCard() {
 function BottomRightCorner() {
   return (
     <div className="absolute bottom-0 right-0 z-20">
-      <div className="relative bg-[#f0f0f0] rounded-tl-[3.5rem] p-6 pt-8 pl-14">
-        {/* Inverted corner fillers — flush the inner curve with the container */}
+      <div className="relative bg-[#f0f0f0] rounded-tl-[2.5rem] md:rounded-tl-[3.5rem] p-5 pt-6 pl-12 md:p-6 md:pt-8 md:pl-14">
+        {/* Inverted-corner fillers: blend the panel flush into the frame edges */}
         <svg
-          className="absolute right-0 bottom-full w-14 h-14"
+          className="absolute right-0 bottom-full w-10 h-10 md:w-14 md:h-14"
           viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M56 56V0C56 30.9279 30.9279 56 0 56H56Z" fill="#f0f0f0" />
+          <path d={CORNER_PATH} fill="#f0f0f0" />
         </svg>
         <svg
-          className="absolute top-0 right-full w-14 h-14 rotate-180"
+          className="absolute bottom-0 right-full w-10 h-10 md:w-14 md:h-14"
           viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M56 56V0C56 30.9279 30.9279 56 0 56H56Z" fill="#f0f0f0" />
+          <path d={CORNER_PATH} fill="#f0f0f0" />
         </svg>
 
         <div className="flex items-center gap-3">
-          <span className="flex items-center justify-center w-10 h-10 rounded-full border border-[#1b2a4e]/15">
+          <span className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-white">
             <ArrowUpRight className="w-5 h-5 text-[#5E6470]" />
           </span>
           <div className="leading-tight">
@@ -107,14 +98,10 @@ function BottomRightCorner() {
 export default function Hero() {
   return (
     <div className="w-full h-screen flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]">
-      <section className="relative w-full max-w-[1536px] h-full rounded-[1.5rem] md:rounded-[3rem] overflow-hidden flex flex-col items-center group">
+      <section className="relative w-full min-w-0 h-full rounded-[1.5rem] md:rounded-[3rem] overflow-hidden flex flex-col items-center group bg-gradient-to-br from-[#aeb8c9] to-[#7c8aa3]">
         {/* Background video */}
-        <video
+        <BackgroundVideo
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
           src={HERO_VIDEO}
         />
         {/* Subtle overlay for legibility */}
@@ -127,21 +114,22 @@ export default function Hero() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex flex-col items-center text-center px-6 mt-16 md:mt-28"
+            className="w-full flex flex-col items-center text-center px-6 mt-12 sm:mt-16 md:mt-28"
           >
-            <HeroBadge />
             <motion.h1
               variants={item}
-              className="mt-6 text-[#5E6470] text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight max-w-4xl"
+              className="text-[#5E6470] text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-full md:max-w-4xl"
             >
-              Fluid Asset Streams
+              The virtual office where AI knows its role
             </motion.h1>
             <motion.p
               variants={item}
-              className="mt-6 text-[#5E6470]/90 text-base md:text-lg max-w-xl"
+              className="mt-5 md:mt-6 text-[#5E6470]/90 text-sm sm:text-base md:text-lg max-w-md md:max-w-2xl"
             >
-              Access Smart Vaults, stake RIVR, and melt rigid assets into
-              continuous, real-time yield across every chain you touch.
+              A privacy-first, open-source workspace where every AI employee
+              works inside team boundaries. Marketing never sees payments
+              engineering. Leadership gets governed visibility — not a
+              free-for-all.
             </motion.p>
           </motion.div>
         </div>

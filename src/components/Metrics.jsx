@@ -1,10 +1,10 @@
 import { motion } from 'motion/react'
 
 const metrics = [
-  { value: '$2.4B', label: 'Total Value Locked' },
-  { value: '8.5%', label: 'Average Realized Yield' },
-  { value: '140K+', label: 'Active Participants' },
-  { value: '< 2s', label: 'Finality Engine' },
+  { value: '100%', label: 'Open source & self-hosted' },
+  { value: '0', label: 'Cross-team data leaks by default' },
+  { value: 'Per role', label: 'Scoped memory & retrieval' },
+  { value: 'Full', label: 'Audit trail on agent actions' },
 ]
 
 const item = {
