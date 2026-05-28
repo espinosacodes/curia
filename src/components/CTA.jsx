@@ -1,6 +1,8 @@
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 import { ArrowUpRight, BookOpen } from 'lucide-react'
 import BackgroundVideo from './BackgroundVideo.jsx'
+import { DEPLOY_TO, DOCS_TO } from '../config/site.js'
 
 const CTA_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260427_104731_bfd355f7-1f84-4f81-ad88-52c2bca70bad.mp4'
@@ -27,23 +29,23 @@ export default function CTA() {
           <h2 className="text-white text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight max-w-3xl">
             Give every team AI that knows its role.
           </h2>
-          <div className="mt-10 flex flex-row items-center gap-4">
-            <a
-              href="#"
+          <div className="mt-10 flex flex-row flex-wrap items-center justify-center gap-4">
+            <Link
+              to={DEPLOY_TO}
               className="group/launch inline-flex items-center gap-2 rounded-full bg-white text-[#1b2a4e] pl-5 pr-1.5 py-1.5 text-sm md:text-base font-medium hover:bg-white/90 transition-colors"
             >
               Deploy Curia
               <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#1b2a4e] text-white transition-transform group-hover/launch:rotate-45">
                 <ArrowUpRight className="w-4 h-4" />
               </span>
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to={DOCS_TO}
               className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-3 text-sm md:text-base font-medium hover:bg-white/20 transition-colors"
             >
               <BookOpen className="w-4 h-4" />
               Read the docs
-            </a>
+            </Link>
           </div>
         </motion.div>
       </section>

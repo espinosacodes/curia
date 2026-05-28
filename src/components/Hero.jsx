@@ -1,7 +1,9 @@
 import { motion } from 'motion/react'
-import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ArrowUpRight, ShieldCheck, GitBranch, KeyRound, Server } from 'lucide-react'
 import Navbar from './Navbar.jsx'
 import BackgroundVideo from './BackgroundVideo.jsx'
+import { DOCS_TO } from '../config/site.js'
 
 const HERO_VIDEO =
   'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4'
@@ -26,35 +28,38 @@ const item = {
 
 const CORNER_PATH = 'M56 56V0C56 30.9279 30.9279 56 0 56H56Z'
 
+const PROOF_POINTS = [
+  { icon: ShieldCheck, label: 'Privacy-first by design' },
+  { icon: GitBranch, label: 'Open source architecture' },
+  { icon: KeyRound, label: 'Scoped by role & policy' },
+  { icon: Server, label: 'Self-hosted on your cloud' },
+]
+
 function BottomLeftCard() {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-10 md:left-10 z-20 rounded-[1.25rem] md:rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-3 sm:p-4 md:p-5 shadow-lg w-[14rem] sm:w-auto sm:max-w-[18rem]"
+      className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-10 md:left-10 z-20 rounded-[1.25rem] md:rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-3 sm:p-4 md:p-5 shadow-lg w-[15rem] sm:w-auto sm:max-w-[18rem]"
     >
-      <div className="flex items-center gap-3">
-        <div className="flex -space-x-2">
-          {[0, 1, 2].map((i) => (
-            <span
-              key={i}
-              className="w-7 h-7 rounded-full border-2 border-white/60 bg-gradient-to-br from-white/70 to-white/30"
-            />
-          ))}
-        </div>
-        <div className="leading-tight">
-          <p className="text-white font-semibold text-base">5.2K</p>
-          <p className="text-white/80 text-xs">Community members</p>
-        </div>
-      </div>
-      <a
-        href="#"
+      <ul className="space-y-2 md:space-y-2.5">
+        {PROOF_POINTS.map(({ icon: Icon, label }) => (
+          <li key={label} className="flex items-center gap-2.5">
+            <Icon className="w-4 h-4 shrink-0 text-white" aria-hidden="true" />
+            <span className="text-white text-xs md:text-sm font-medium">
+              {label}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <Link
+        to={DOCS_TO}
         className="mt-3 md:mt-4 flex items-center justify-center gap-2 rounded-full bg-white text-[#1b2a4e] text-sm font-medium px-4 py-2 hover:bg-white/90 transition-colors"
       >
-        Join Discord
+        Read the docs
         <ArrowUpRight className="w-4 h-4" />
-      </a>
+      </Link>
     </motion.div>
   )
 }
@@ -81,15 +86,15 @@ function BottomRightCorner() {
           <path d={CORNER_PATH} fill="#f0f0f0" />
         </svg>
 
-        <div className="flex items-center gap-3">
-          <span className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#1b2a4e]/15">
+        <Link to={DOCS_TO} className="flex items-center gap-3 group/doc">
+          <span className="flex items-center justify-center w-9 h-9 md:w-10 md:h-10 rounded-full border border-[#1b2a4e]/15 transition-transform group-hover/doc:scale-110">
             <ArrowUpRight className="w-5 h-5 text-[#5E6470]" />
           </span>
           <div className="leading-tight">
             <p className="text-[#5E6470] text-sm font-medium">Documentation</p>
             <p className="text-[#5E6470]/60 text-xs">Library</p>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   )

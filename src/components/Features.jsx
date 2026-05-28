@@ -1,5 +1,7 @@
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 import { Layers, Activity, ShieldCheck, ArrowUpRight } from 'lucide-react'
+import { ROUTES } from '../config/site.js'
 
 const cardBase =
   'group relative bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]'
@@ -27,13 +29,13 @@ export default function Features() {
         >
           Most AI tools flatten your organization. Curia doesn&apos;t.
         </motion.h2>
-        <a
-          href="#"
+        <Link
+          to={ROUTES.access}
           className="group/btn shrink-0 inline-flex items-center gap-2 rounded-full border border-[#1b2a4e]/20 px-5 py-2.5 text-[#1b2a4e] text-sm font-medium hover:bg-[#1b2a4e] hover:text-white transition-colors"
         >
           See how access works
           <ArrowUpRight className="w-4 h-4 transition-transform group-hover/btn:rotate-45" />
-        </a>
+        </Link>
       </div>
 
       {/* Grid */}
@@ -109,12 +111,12 @@ export default function Features() {
               access is logged — what an agent read, and why.
             </p>
           </div>
-          <a
-            href="#"
+          <Link
+            to={ROUTES.security}
             className="self-start inline-flex items-center gap-2 rounded-full border border-[#1b2a4e]/20 px-4 py-2 text-[#1b2a4e] text-sm font-medium hover:bg-[#1b2a4e] hover:text-white transition-colors"
           >
             View audit logs
-          </a>
+          </Link>
         </motion.div>
 
         {/* Card 4 — Bottom Right 2 */}
