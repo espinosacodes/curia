@@ -13,6 +13,7 @@ import Privacy from './pages/Privacy.jsx'
 import Terms from './pages/Terms.jsx'
 import Blog from './pages/Blog.jsx'
 import BlogPost from './pages/BlogPost.jsx'
+// import Liquid from './pages/Liquid.jsx' // dev-only liquid-logo preview — disabled in production
 import NotFound from './pages/NotFound.jsx'
 
 import VirtualOffice from './pages/product/VirtualOffice.jsx'
@@ -30,6 +31,8 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path={ROUTES.home} element={<Home />} />
+        {/* dev-only liquid-logo preview — disabled in production */}
+        {/* <Route path="/liquid" element={<Liquid />} /> */}
 
         {/* All content pages share the solid-navbar + footer layout */}
         <Route element={<SiteLayout />}>

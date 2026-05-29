@@ -24,12 +24,17 @@ export default function Navbar({ variant = 'overlay' }) {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`flex items-center justify-between gap-3 ${wrapper}`}
     >
-      {/* Logo / home link. On the overlay hero it stays mobile-only to preserve
-          the original centered look; on content pages it shows everywhere. */}
+      {/* Logo / home link — animated mark + wordmark, shown on every breakpoint. */}
       <Link
         to={ROUTES.home}
-        className={`${logoColor} ${solid ? '' : 'md:hidden'} ${focusRing} text-2xl font-semibold tracking-tight`}
+        className={`${logoColor} ${focusRing} flex items-center gap-2 text-2xl font-semibold tracking-tight`}
       >
+        <img
+          src={solid ? '/curia-mark-navy.png' : '/curia-mark.gif'}
+          alt=""
+          aria-hidden="true"
+          className="h-7 w-7 shrink-0 object-contain"
+        />
         Curia
       </Link>
 
