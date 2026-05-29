@@ -1,10 +1,11 @@
 import { motion } from 'motion/react'
 import { BookOpen } from 'lucide-react'
 import { Button } from './ui.jsx'
+import GradientBg from './GradientBg.jsx'
 import { DEPLOY_TO, DOCS_TO } from '../config/site.js'
 
-// Reusable closing CTA band for content pages. Matches the homepage CTA color
-// system (navy→plum gradient) without loading a video on every page.
+// Reusable closing CTA band for content pages. Shares the homepage CTA's
+// animated shader-gradient background (navy).
 export default function CalloutCTA({
   title = 'Give every team AI that knows its role.',
   primaryLabel = 'Deploy Curia',
@@ -14,7 +15,8 @@ export default function CalloutCTA({
 }) {
   return (
     <div className="w-full flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]">
-      <section className="relative w-full max-w-[1536px] min-h-[18rem] md:min-h-[24rem] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#2b3a5e] to-[#46365e] px-6 py-16">
+      <section className="relative w-full max-w-[1536px] min-h-[18rem] md:min-h-[24rem] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#1b2a4e] to-[#243a6b] px-6 py-16">
+        <GradientBg />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -1,45 +1,15 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, BookOpen } from 'lucide-react'
-import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
+import GradientBg from './GradientBg.jsx'
 import { DEPLOY_TO, DOCS_TO } from '../config/site.js'
 
 export default function CTA() {
   return (
     <div className="w-full flex items-center justify-center p-3 md:p-5 bg-[#f0f0f0]">
       <section className="relative w-full min-h-[34rem] md:min-h-[40rem] rounded-[1.5rem] md:rounded-[3rem] overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#1b2a4e] to-[#243a6b]">
-        {/* Animated shader-gradient background (brand palette) */}
-        <ShaderGradientCanvas
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
-          pixelDensity={1}
-          fov={40}
-        >
-          <ShaderGradient
-            control="props"
-            type="waterPlane"
-            animate="on"
-            color1="#16294f"
-            color2="#243a6b"
-            color3="#3a5fa6"
-            uSpeed={0.22}
-            uStrength={1.6}
-            uDensity={1.7}
-            uFrequency={5.5}
-            grain="off"
-            rotationX={50}
-            rotationY={0}
-            rotationZ={-60}
-            cAzimuthAngle={180}
-            cPolarAngle={80}
-            cDistance={2.8}
-            cameraZoom={9.1}
-            lightType="3d"
-            brightness={1.25}
-            reflection={0.1}
-          />
-        </ShaderGradientCanvas>
-        {/* Overlay for legibility (kept light so the gradient detail shows) */}
-        <div className="absolute inset-0 bg-black/20" />
+        {/* Animated shader-gradient background (shared, brand navy) */}
+        <GradientBg />
 
         {/* Content */}
         <motion.div
