@@ -18,14 +18,14 @@ export default function CTA() {
             control="props"
             type="waterPlane"
             animate="on"
-            color1="#061633"
-            color2="#173f86"
-            color3="#c9a25c"
+            color1="#16294f"
+            color2="#243a6b"
+            color3="#3a5fa6"
             uSpeed={0.22}
             uStrength={1.6}
             uDensity={1.7}
             uFrequency={5.5}
-            grain="on"
+            grain="off"
             rotationX={50}
             rotationY={0}
             rotationZ={-60}
@@ -34,12 +34,12 @@ export default function CTA() {
             cDistance={2.8}
             cameraZoom={9.1}
             lightType="3d"
-            brightness={1.05}
+            brightness={1.25}
             reflection={0.1}
           />
         </ShaderGradientCanvas>
         {/* Overlay for legibility (kept light so the gradient detail shows) */}
-        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 bg-black/20" />
 
         {/* Content */}
         <motion.div
