@@ -71,7 +71,7 @@ function BottomLeftCard() {
 function BottomRightCorner() {
   return (
     <div className="absolute bottom-0 right-0 z-20">
-      <div className="relative bg-[#f0f0f0] rounded-tl-[2.5rem] md:rounded-tl-[3.5rem] p-5 pt-6 pl-12 md:p-6 md:pt-8 md:pl-14">
+      <div className="relative bg-[#f0f0f0] rounded-tl-[2.5rem] md:rounded-tl-[3.5rem] rounded-br-[1.5rem] md:rounded-br-[3rem] p-5 pt-6 pl-12 md:p-6 md:pt-8 md:pl-14">
         {/* Inverted-corner fillers: blend the panel flush into the frame edges.
             Each filler overlaps 1px into the panel (translate) so Safari's
             sub-pixel rounding can't leave a see-through seam at the butt-joint. */}
