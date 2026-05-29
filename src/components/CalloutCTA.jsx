@@ -24,7 +24,7 @@ export default function CalloutCTA({
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-10 flex flex-col items-center text-center"
         >
-          <h2 className="text-white text-3xl md:text-5xl font-semibold tracking-tight max-w-2xl">
+          <h2 className="text-white text-3xl md:text-5xl font-semibold tracking-tight max-w-2xl [text-shadow:0_2px_24px_rgba(8,16,38,0.6)]">
             {title}
           </h2>
           <div className="mt-8 flex flex-row flex-wrap items-center justify-center gap-4">

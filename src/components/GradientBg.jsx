@@ -17,7 +17,7 @@ export default function GradientBg() {
           animate="on"
           color1="#0a1838"
           color2="#243a6b"
-          color3="#4a7ad0"
+          color3="#eef3fb"
           uSpeed={0.22}
           uStrength={1.9}
           uDensity={1.7}
