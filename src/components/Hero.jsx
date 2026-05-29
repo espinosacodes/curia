@@ -72,9 +72,11 @@ function BottomRightCorner() {
   return (
     <div className="absolute bottom-0 right-0 z-20">
       <div className="relative bg-[#f0f0f0] rounded-tl-[2.5rem] md:rounded-tl-[3.5rem] p-5 pt-6 pl-12 md:p-6 md:pt-8 md:pl-14">
-        {/* Inverted-corner fillers: blend the panel flush into the frame edges */}
+        {/* Inverted-corner fillers: blend the panel flush into the frame edges.
+            Each filler overlaps 1px into the panel (translate) so Safari's
+            sub-pixel rounding can't leave a see-through seam at the butt-joint. */}
         <svg
-          className="absolute right-0 bottom-full w-10 h-10 md:w-14 md:h-14"
+          className="absolute right-0 bottom-full translate-y-px w-10 h-10 md:w-14 md:h-14"
           viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +84,7 @@ function BottomRightCorner() {
           <path d={CORNER_PATH} fill="#f0f0f0" />
         </svg>
         <svg
-          className="absolute bottom-0 right-full w-10 h-10 md:w-14 md:h-14"
+          className="absolute bottom-0 right-full translate-x-px w-10 h-10 md:w-14 md:h-14"
           viewBox="0 0 56 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
