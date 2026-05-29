@@ -5,12 +5,12 @@ import Navbar from './Navbar.jsx'
 import BackgroundVideo from './BackgroundVideo.jsx'
 import { DOCS_TO } from '../config/site.js'
 
-// Generated "pórtico de Curia" hero videos (in /public). Swap to compare:
-//   /hero-v2-static-4k.mp4        — v2 scene, locked camera, only water moves, 4K (current)
-//   /hero-v2-portico-surreal.mp4  — original v2 (camera drifts)
-//   /hero-v1-portico-water.mp4    — colonnade + reflective water (palette)
-//   /hero-v3-portico-minimal.mp4  — sparse, misty, max text legibility
-const HERO_VIDEO = '/hero-v2-static-4k.mp4'
+// Generated "pórtico de Curia" hero videos (R2: curia-assets). Swap to compare:
+//   hero-v2-static-4k.mp4        — v2 scene, locked camera, only water moves, 4K (current)
+//   hero-v2-portico-surreal.mp4  — original v2 (camera drifts)
+//   hero-v1-portico-water.mp4    — colonnade + reflective water (palette)
+//   hero-v3-portico-minimal.mp4  — sparse, misty, max text legibility
+const HERO_VIDEO = 'https://assets.getcuria.us/hero-v2-static-4k.mp4'
 
 const container = {
   hidden: { opacity: 0 },
@@ -45,7 +45,7 @@ function BottomLeftCard() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-10 md:left-10 z-20 rounded-[1.25rem] md:rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-3 sm:p-4 md:p-5 shadow-lg w-[15rem] sm:w-auto sm:max-w-[18rem]"
+      className="hidden sm:block absolute sm:bottom-6 sm:left-6 md:bottom-10 md:left-10 z-20 rounded-[1.25rem] md:rounded-[1.5rem] bg-white/30 backdrop-blur-xl border border-white/30 p-3 sm:p-4 md:p-5 shadow-lg sm:w-auto sm:max-w-[18rem]"
     >
       <ul className="space-y-2 md:space-y-2.5">
         {PROOF_POINTS.map(({ icon: Icon, label }) => (
