@@ -70,7 +70,7 @@ const organization = [
     icon: Map,
     title: 'Deployment',
     to: ROUTES.deployment,
-    body: 'End-to-end guidance for local development, Docker, Kubernetes, and cloud-agnostic self-hosting.',
+    body: 'End-to-end guidance for local development, Docker, per-cloud managed data patterns, Kubernetes, and cloud-agnostic self-hosting.',
   },
 ]
 

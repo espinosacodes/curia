@@ -70,7 +70,7 @@ export const POSTS = [
     date: '2026-04-28',
     readingTime: '7 min read',
     excerpt:
-      'Curia is Kubernetes-first and runs on AWS, Azure, or GCP. Here is how the self-hosted model keeps data and AI inside your trust boundary.',
+      'Curia runs on each cloud’s native managed data services — DynamoDB, Cosmos DB, or Bigtable — or on PostgreSQL and Kubernetes. Here is how the self-hosted model keeps data and AI inside your trust boundary.',
     body: [
       {
         paragraphs: [
@@ -78,16 +78,16 @@ export const POSTS = [
         ],
       },
       {
-        heading: 'Kubernetes-first, cloud-agnostic',
+        heading: 'Cloud-native, cloud-agnostic',
         paragraphs: [
-          'Curia is designed to deploy on Kubernetes, so it runs the same way on Amazon EKS, Azure AKS, or Google GKE. For evaluation you can run it locally with Docker; for production you bring your own managed database, object storage, and ingress.',
+          'Curia maps onto each provider’s native managed data services rather than locking you to one engine: DynamoDB with OpenSearch on AWS, Cosmos DB with its built-in vector index on Azure, and Cloud Bigtable with BigQuery Vector Search on GCP. Prefer a portable, self-managed stack? Run it on Kubernetes with PostgreSQL and a vector store such as pgvector. For evaluation you can run it locally with Docker; for production you bring your own data tier, object storage, and ingress.',
           'Bring-your-own-models means inference can point at the providers or self-hosted models you already trust, keeping prompts and retrieved context within your boundary.',
         ],
       },
       {
         heading: 'Where to start',
         paragraphs: [
-          'The Deployment guide walks through local development, a Docker setup, Kubernetes manifests, and per-cloud notes for AWS, Azure, and GCP, along with the storage and service assumptions Curia makes. The Documentation covers configuring agents, model providers, and access policies once you are running.',
+          'The Deployment guide walks through local development, a Docker setup, Kubernetes manifests, and per-cloud reference patterns for AWS, Azure, and GCP — including the recommended core database and retrieval tier for each — along with the storage and service assumptions Curia makes. The Documentation covers configuring agents, model providers, and access policies once you are running.',
         ],
       },
     ],

@@ -187,14 +187,15 @@ export default function Developers() {
       <Section>
         <SectionHeading
           eyebrow="Self-hosting model"
-          title="Kubernetes-first and cloud-agnostic"
+          title="Cloud-native and cloud-agnostic"
           intro="Curia is designed to run on infrastructure you control. There is no required vendor and no hidden hosted dependency in the core path."
         />
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
           <Reveal>
-            <IconFeature icon={Boxes} title="Kubernetes-first">
-              Packaged to deploy on Kubernetes, so you get the same scaling,
-              rollout, and recovery model you already use for other services.
+            <IconFeature icon={Boxes} title="Native managed data">
+              Runs on each cloud’s managed data services — DynamoDB, Cosmos DB,
+              or Bigtable, with OpenSearch or built-in vector search for
+              retrieval — or on Kubernetes with PostgreSQL for full portability.
             </IconFeature>
           </Reveal>
           <Reveal delay={0.05}>

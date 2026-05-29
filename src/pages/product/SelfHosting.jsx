@@ -24,8 +24,8 @@ const ownership = [
   },
   {
     icon: Boxes,
-    title: 'Kubernetes-first',
-    body: 'Built to run on Kubernetes. Deploy into your own cluster and use the scaling, scheduling, and operational tooling your team already knows.',
+    title: 'Native managed data',
+    body: 'Runs on each cloud’s managed data services — DynamoDB on AWS, Cosmos DB on Azure, Bigtable on GCP — with OpenSearch or built-in vector search for retrieval. Prefer portability? Deploy on Kubernetes with PostgreSQL instead.',
   },
   {
     icon: GitBranch,
@@ -65,7 +65,7 @@ export default function SelfHosting() {
       <PageHeader
         eyebrow="Self-Hosting"
         title="Your workspace, your cloud, your control"
-        lead="Curia is open source and deploys into your own environment on AWS, Azure, or GCP. It is Kubernetes-first, works with the models you choose, and keeps data inside the cloud boundary you own."
+        lead="Curia is open source and deploys into your own environment on AWS, Azure, or GCP. It runs on each cloud’s native managed data services — DynamoDB, Cosmos DB, or Bigtable — or on PostgreSQL and Kubernetes, works with the models you choose, and keeps data inside the cloud boundary you own."
         actions={
           <>
             <Button to={ROUTES.deployment}>Deployment guide</Button>

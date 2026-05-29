@@ -1,5 +1,5 @@
-import { Database, HardDrive, Network, Zap, Cpu } from 'lucide-react'
-import { AwsLogo, AzureLogo, GcpLogo } from '../../components/BrandIcons.jsx'
+import { Database, HardDrive, Network, Zap, Cpu, Search } from 'lucide-react'
+import { AwsLogo, AzureLogo, GcpLogo, KubernetesLogo } from '../../components/BrandIcons.jsx'
 import PageHeader from '../../components/PageHeader.jsx'
 import CalloutCTA from '../../components/CalloutCTA.jsx'
 import {
@@ -46,26 +46,87 @@ helm install curia ./deploy/helm/curia \\
 const cloudNotes = [
   {
     icon: AwsLogo,
-    title: 'AWS EKS',
-    body: 'Run on a managed EKS cluster. Pair with RDS for PostgreSQL, S3 for object storage, ElastiCache for caching, and an ALB ingress with ACM-issued TLS.',
+    title: 'AWS',
+    body: 'Use DynamoDB as the core store and OpenSearch for retrieval and RAG, with DynamoDB Streams or Zero-ETL keeping them in sync. S3 for object storage, ElastiCache for caching, and an ALB ingress with ACM-issued TLS. Run the compute on EKS or any container runtime.',
   },
   {
     icon: AzureLogo,
-    title: 'Azure AKS',
-    body: 'Deploy to AKS. Use Azure Database for PostgreSQL, Blob Storage for objects, Azure Cache for Redis, and the application gateway ingress controller for TLS.',
+    title: 'Microsoft Azure',
+    body: 'Use Azure Cosmos DB as the core store — its built-in NoSQL vector index handles retrieval and RAG with no separate search service to sync. Blob Storage for objects, Azure Cache for Redis, and the application gateway ingress controller for TLS. True-serverless, pay-per-request pricing throughout.',
   },
   {
     icon: GcpLogo,
-    title: 'GCP GKE',
-    body: 'Deploy to GKE. Use Cloud SQL for PostgreSQL, Cloud Storage for objects, Memorystore for caching, and a GKE ingress with managed certificates.',
+    title: 'Google Cloud',
+    body: 'Use Cloud Bigtable as the core store and BigQuery Vector Search for retrieval via direct federated queries — no sync infrastructure to operate. Cloud Storage for objects, Memorystore for caching, and a GKE ingress with managed certificates.',
+  },
+  {
+    icon: KubernetesLogo,
+    title: 'Kubernetes + PostgreSQL',
+    body: 'Prefer to run it yourself? Deploy on any Kubernetes cluster with PostgreSQL as the core store and pgvector for retrieval — one engine, no data sync, and no dependency on a managed cloud service. The fully portable path for on-prem, air-gapped, or multi-cloud.',
   },
 ]
+
+const dbPatterns = {
+  capabilities: [
+    { key: 'core', label: 'Primary core DB' },
+    { key: 'search', label: 'Search / AI add-on' },
+    { key: 'sync', label: 'Data sync overhead' },
+    { key: 'pricing', label: 'Pricing nature' },
+  ],
+  clouds: [
+    {
+      logo: AwsLogo,
+      name: 'AWS',
+      values: {
+        core: 'DynamoDB',
+        search: 'OpenSearch',
+        sync: 'DynamoDB Streams / Zero-ETL',
+        pricing: 'Fixed instance cost for OpenSearch',
+      },
+    },
+    {
+      logo: AzureLogo,
+      name: 'Microsoft Azure',
+      values: {
+        core: 'Azure Cosmos DB',
+        search: 'Built-in NoSQL vector index',
+        sync: 'Native turnkey sync (zero infrastructure)',
+        pricing: 'True serverless (pay per request / GB)',
+      },
+    },
+    {
+      logo: GcpLogo,
+      name: 'Google Cloud',
+      values: {
+        core: 'Cloud Bigtable',
+        search: 'BigQuery Vector Search',
+        sync: 'Direct federated queries (zero infrastructure)',
+        pricing: 'Serverless analytics (pay per TB scanned)',
+      },
+    },
+    {
+      logo: KubernetesLogo,
+      name: 'Kubernetes',
+      values: {
+        core: 'PostgreSQL',
+        search: 'pgvector',
+        sync: 'Single engine — no sync',
+        pricing: 'Fixed cluster cost (self-managed)',
+      },
+    },
+  ],
+}
 
 const assumptions = [
   {
     icon: Database,
-    title: 'Relational database',
-    body: 'A managed PostgreSQL-style database holds organizations, teams, spaces, policies, and audit logs.',
+    title: 'Core data store',
+    body: 'Holds organizations, teams, spaces, policies, and audit logs. Use a managed NoSQL store — DynamoDB, Cosmos DB, or Bigtable — or PostgreSQL where you want a relational, fully portable option.',
+  },
+  {
+    icon: Search,
+    title: 'Retrieval & vector search',
+    body: 'Powers RAG over your workspace knowledge: OpenSearch on AWS, the built-in Cosmos DB vector index on Azure, BigQuery Vector Search on GCP — or any pgvector / vector store you already run.',
   },
   {
     icon: HardDrive,
@@ -89,13 +150,89 @@ const assumptions = [
   },
 ]
 
+function ComparisonTable() {
+  return (
+    <div className="mt-8 md:mt-10 overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-white">
+      {/* md+ : real comparison table */}
+      <table className="hidden md:table w-full border-collapse text-left">
+        <thead>
+          <tr>
+            <th className="p-5 lg:p-6 align-bottom text-[#5E6470]/70 text-xs font-medium tracking-[0.14em] uppercase">
+              Capability
+            </th>
+            {dbPatterns.clouds.map((c) => (
+              <th
+                key={c.name}
+                className="p-5 lg:p-6 align-bottom border-l border-[#1b2a4e]/10"
+              >
+                <span className="flex items-center gap-2.5">
+                  <c.logo className="w-6 h-6 shrink-0" aria-hidden="true" />
+                  <span className="text-[#1b2a4e] text-base font-semibold tracking-tight">
+                    {c.name}
+                  </span>
+                </span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {dbPatterns.capabilities.map((cap) => (
+            <tr key={cap.key} className="border-t border-[#1b2a4e]/10">
+              <th
+                scope="row"
+                className="p-5 lg:p-6 align-top text-[#1b2a4e] text-sm font-semibold"
+              >
+                {cap.label}
+              </th>
+              {dbPatterns.clouds.map((c) => (
+                <td
+                  key={c.name}
+                  className="p-5 lg:p-6 align-top border-l border-[#1b2a4e]/10 text-[#5E6470] text-sm leading-relaxed"
+                >
+                  {c.values[cap.key]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {/* mobile : stacked per-cloud cards */}
+      <div className="md:hidden divide-y divide-[#1b2a4e]/10">
+        {dbPatterns.clouds.map((c) => (
+          <div key={c.name} className="p-6">
+            <div className="flex items-center gap-2.5">
+              <c.logo className="w-6 h-6 shrink-0" aria-hidden="true" />
+              <span className="text-[#1b2a4e] text-lg font-semibold tracking-tight">
+                {c.name}
+              </span>
+            </div>
+            <dl className="mt-4 space-y-3">
+              {dbPatterns.capabilities.map((cap) => (
+                <div key={cap.key}>
+                  <dt className="text-[#5E6470]/70 text-xs font-medium tracking-[0.14em] uppercase">
+                    {cap.label}
+                  </dt>
+                  <dd className="mt-0.5 text-[#5E6470] text-sm leading-relaxed">
+                    {c.values[cap.key]}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Deployment() {
   return (
     <>
       <PageHeader
         eyebrow="Deployment"
         title="Deployment"
-        lead="Curia is Kubernetes-first and cloud-agnostic. Self-host it on your own infrastructure — from a laptop in development to a clustered production deployment — with no dependency on a single vendor."
+        lead="Curia is cloud-agnostic and runs on each provider's native managed data services — DynamoDB, Cosmos DB, or Bigtable — or on PostgreSQL and Kubernetes where you want a fully portable, self-managed stack. Self-host it on your own infrastructure, from a laptop in development to a clustered production deployment, with no dependency on a single vendor."
         actions={
           <Button href={REPO_URL} external>
             View on GitHub
@@ -163,11 +300,11 @@ export default function Deployment() {
       {/* Cloud notes */}
       <Section>
         <SectionHeading
-          eyebrow="Cloud notes"
-          title="Cloud-agnostic by design"
-          intro="Curia runs the same on any managed Kubernetes service. The notes below map its dependencies to common managed offerings on each provider."
+          eyebrow="Cloud patterns"
+          title="Native managed data on every cloud"
+          intro="Curia maps onto each provider's serverless data services rather than locking you to one engine. Pick the managed pattern that fits the cloud you already run — or bring PostgreSQL and Kubernetes for a fully portable stack."
         />
-        <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
           {cloudNotes.map((c, i) => (
             <Reveal key={c.title} delay={i * 0.05}>
               <IconFeature icon={c.icon} title={c.title}>
@@ -176,6 +313,18 @@ export default function Deployment() {
             </Reveal>
           ))}
         </div>
+      </Section>
+
+      {/* Reference data patterns */}
+      <Section>
+        <SectionHeading
+          eyebrow="Reference patterns"
+          title="Core database and retrieval, by deployment target"
+          intro="The recommended data tier for each target, including a self-managed Kubernetes + PostgreSQL path for full portability. These are defaults, not requirements — mix and match the engines and search stores that fit your environment."
+        />
+        <Reveal>
+          <ComparisonTable />
+        </Reveal>
       </Section>
 
       {/* Storage & services assumptions */}
