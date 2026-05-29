@@ -5,8 +5,12 @@ import Navbar from './Navbar.jsx'
 import BackgroundVideo from './BackgroundVideo.jsx'
 import { DOCS_TO } from '../config/site.js'
 
-const HERO_VIDEO =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260428_193507_4286c423-2fd9-4efd-92bd-91a939453fc1.mp4'
+// Generated "pórtico de Curia" hero videos (in /public). Swap to compare:
+//   /hero-v2-static-4k.mp4        — v2 scene, locked camera, only water moves, 4K (current)
+//   /hero-v2-portico-surreal.mp4  — original v2 (camera drifts)
+//   /hero-v1-portico-water.mp4    — colonnade + reflective water (palette)
+//   /hero-v3-portico-minimal.mp4  — sparse, misty, max text legibility
+const HERO_VIDEO = '/hero-v2-static-4k.mp4'
 
 const container = {
   hidden: { opacity: 0 },
@@ -110,7 +114,7 @@ export default function Hero() {
           src={HERO_VIDEO}
         />
         {/* Subtle overlay for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/10 to-black/30" />
 
         {/* Main content */}
         <div className="relative z-10 w-full flex flex-col items-center">
@@ -123,13 +127,13 @@ export default function Hero() {
           >
             <motion.h1
               variants={item}
-              className="text-[#5E6470] text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-full md:max-w-4xl"
+              className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-full md:max-w-4xl [text-shadow:0_2px_20px_rgba(11,18,38,0.55)]"
             >
               The virtual office where AI knows its role
             </motion.h1>
             <motion.p
               variants={item}
-              className="mt-5 md:mt-6 text-[#5E6470]/90 text-sm sm:text-base md:text-lg max-w-md md:max-w-2xl"
+              className="mt-5 md:mt-6 text-white/90 text-sm sm:text-base md:text-lg max-w-md md:max-w-2xl [text-shadow:0_1px_14px_rgba(11,18,38,0.55)]"
             >
               A privacy-first, open-source workspace where every AI employee
               works inside team boundaries. Marketing never sees payments
